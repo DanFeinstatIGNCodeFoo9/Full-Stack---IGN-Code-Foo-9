@@ -1,17 +1,16 @@
-const userModel = require(`../models/suers`);
+const userModel = require(`../model/users`);
 const bcrypt = require(`bcrypt`);
 const jwt = require(`jsonwebtoken`);
 
 module.exports = {
-  create: (req, res, next) => {
+  create: function(req, res, next) {
     userModel.create(
       {
         name: req.body.name,
-        email: req.body,
-        email,
+        email: req.body.email,
         password: req.body.password,
       },
-      (err, result) => {
+      function(err, result) {
         if (err) {
           next(err);
         } else {
@@ -25,18 +24,15 @@ module.exports = {
     );
   },
 
-  authenticate: (req,
-  res,
-  next => {
-    userModel.findONe({ email: req.body.email }, (err, userInfo) => {
+  authenticate: function(req, res, next) {
+    userModel.findOne({ email: req.body.email }, function(err, userInfo) {
       if (err) {
         next(err);
       } else {
         if (bcrypt.compareSync(req.body.password, userInfo.password)) {
           const token = jwt.sign(
             { id: userInfo._id },
-            req.app.get(`secretKey`),
-            { expiresIn: `1h` }
+            req.app.get(`secretKey`)
           );
           res.json({
             status: `success`,
@@ -52,5 +48,5 @@ module.exports = {
         }
       }
     });
-  }),
+  },
 };

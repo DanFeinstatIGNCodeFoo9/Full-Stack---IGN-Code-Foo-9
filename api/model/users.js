@@ -9,6 +9,7 @@ const UserSchema = new Schema({
     type: String,
     trim: true,
     required: true,
+    index: { unique: true },
   },
   email: {
     type: String,
@@ -22,7 +23,7 @@ const UserSchema = new Schema({
   },
 });
 
-UserSchema.Schema.pre(`save`, next => {
+UserSchema.pre("save", function(next) {
   this.password = bcrypt.hashSync(this.password, saltRounds);
   next();
 });
