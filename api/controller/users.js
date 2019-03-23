@@ -32,7 +32,7 @@ module.exports = {
         if (bcrypt.compareSync(req.body.password, userInfo.password)) {
           const token = jwt.sign(
             { id: userInfo._id },
-            req.app.get(`secretKey`)
+            req.app.get(process.env.SECRET)
           );
           res.json({
             status: `success`,
@@ -46,6 +46,43 @@ module.exports = {
             data: null,
           });
         }
+      }
+    });
+  },
+
+  updateSocketId: function(req, res, next) {
+    userModel.findOneAndUpdate(
+      {
+        email: req.body.email,
+      },
+      {
+        $set: { socketId: req.body.socketId },
+      },
+      function(err, socketInfo) {
+        if (err) {
+          next(err);
+        } else {
+          console.log(`success!`);
+          res.json({
+            status: `success`,
+            message: `socketId updated`,
+            data: { data: socketInfo },
+          });
+        }
+      }
+    );
+  },
+
+  findAll: function(req, res, next) {
+    userModel.find({}, { name: 1, socketId: 1 }, function(err, userInfo) {
+      if (err) {
+        next(err);
+      } else {
+        res.json({
+          status: `success`,
+          message: `got users`,
+          data: { users: userInfo },
+        });
       }
     });
   },

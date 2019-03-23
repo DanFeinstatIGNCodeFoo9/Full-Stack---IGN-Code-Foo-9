@@ -4,5 +4,7 @@ const userController = require(`../api/controller/users`);
 
 router.post(`/register`, userController.create);
 router.post(`/authenticate`, userController.authenticate);
+router.put(`/socket`, userController.updateSocketId);
+router.get(`/userlist`, userController.findAll);
 
 module.exports = router;

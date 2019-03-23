@@ -1,0 +1,12 @@
+.container {
+  grid-column-start: 2;
+  grid-row-start: 2;
+  background-color: green;
+}
+
+@media (min-width: 500px) {
+  .container {
+    grid-column-start: 2;
+    grid-row-start: 2;
+  }
+}

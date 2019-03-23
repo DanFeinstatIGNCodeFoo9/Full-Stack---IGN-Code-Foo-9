@@ -19,9 +19,9 @@ function validateUser(req, res, next) {
   });
 }
 
-router.use(`/user`, userRoutes);
+router.use(`/api/user`, userRoutes);
 
 //private route
-router.use(`/chat`, validateUser, chatRoutes);
+router.use(`/api/chat`, validateUser, chatRoutes);
 
 module.exports = router;

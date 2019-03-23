@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const ChatSchema = new Schema({
   authorOne: { type: String, trim: true, required: true },
   authorTwo: { type: String, trim: true, required: true },
+  room: { type: String, trim: true, required: true },
   comments: [
     {
       body: { type: String, trim: true, required: true },

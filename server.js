@@ -1,23 +1,24 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-const path = require("path");
-const dotenv = require("dotenv");
-const routes = require("./routes");
-
+const express = require(`express`);
+const bodyParser = require(`body-parser`);
+const mongoose = require(`mongoose`);
+const path = require(`path`);
+const dotenv = require(`dotenv`);
+const routes = require(`./routes`);
 const app = express();
+var server = require("http").Server(app);
+var io = require("socket.io")(server);
 const PORT = process.env.PORT || 3002;
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(`Access-Control-Allow-Origin`, `*`);
   res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Content-type,application/json"
+    `Access-Control-Allow-Headers`,
+    `Content-type,application/json`
   );
   next();
 });
 
-dotenv.config({ path: ".env" });
+dotenv.config({ path: `.env` });
 
 app.set(`secretKey`, `nodeRestApi`);
 
@@ -41,19 +42,30 @@ app.use((err, req, res, next) => {
   }
 });
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client/build")));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+if (process.env.NODE_ENV === `production`) {
+  app.use(express.static(path.join(__dirname, `client/build`)));
+  app.get(`*`, (req, res) => {
+    res.sendFile(path.resolve(__dirname, `client`, `build`, `index.html`));
   });
 }
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/chatIGN", {
+mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/chatIGN`, {
   useNewUrlParser: true,
 });
 
-app.listen(PORT, () => {
-  console.log("Listening on port: " + PORT);
+io.on(`connection`, function(socket) {
+  console.log(`a new user is connected: ${socket.id}`);
+  socket.on("userLoggedIn", data => {
+    socket.broadcast.emit("userConnected", {
+      connectionId: socket.id,
+      userId: data.userId,
+    });
+  });
+  socket.on("disconnect", () => console.log(`${socket.id} has disconnected`));
+});
+
+server.listen(PORT, () => {
+  console.log(`Listening on port: ` + PORT);
 });

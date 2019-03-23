@@ -14,12 +14,18 @@ const UserSchema = new Schema({
   email: {
     type: String,
     trim: true,
+    match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
     required: true,
   },
   password: {
     type: String,
     trim: true,
     required: true,
+  },
+
+  socketId: {
+    type: String,
+    trim: true,
   },
 });
 

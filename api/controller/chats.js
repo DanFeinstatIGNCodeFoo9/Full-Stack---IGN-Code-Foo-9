@@ -1,3 +1,5 @@
+// const http = require(`http`).Server(app);
+// const io = require(`socket.io`)(http);
 const chatModel = require(`../model/chats`);
 
 module.exports = {
@@ -6,6 +8,7 @@ module.exports = {
       {
         authorOne: req.body.authorOne,
         authorTwo: req.body.authorTwo,
+        room: `${req.body.authorOne} ${req.body.authorTwo}`,
         comments: [],
       },
       function(err, success) {
@@ -15,7 +18,7 @@ module.exports = {
           res.json({
             status: `success`,
             message: `new chat created`,
-            data: null,
+            data: { data: success },
           });
         }
       }
