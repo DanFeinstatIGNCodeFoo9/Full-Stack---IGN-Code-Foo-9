@@ -11,7 +11,16 @@ const PORT = process.env.PORT || 3002;
 
 app.use((req, res, next) => {
   res.setHeader(`Access-Control-Allow-Origin`, `*`);
-  // res.setHeader(`Access-Control-Allow-Headers`);
+
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-type,application/json,x-access-token"
+  );
   next();
 });
 
