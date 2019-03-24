@@ -9,10 +9,10 @@ import userAPI from "./utils/userAPI";
 import chatAPI from "./utils/chatAPI";
 import genchatAPI from "./utils/genchatAPI";
 import io from "socket.io-client";
-import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from "constants";
+// import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from "constants";
 // import { stat } from "fs";
 
-const socket = io.connect("http://localhost:3002/");
+const socket = io.connect();
 
 class App extends Component {
   state = {
