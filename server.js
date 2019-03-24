@@ -72,7 +72,7 @@ io.on(`connection`, function(socket) {
   });
   socket.on("sendingGenMessage", data => {
     console.log(data);
-    socket.emit("newGenMessage", {
+    io.emit("newGenMessage", {
       data,
     });
   });
