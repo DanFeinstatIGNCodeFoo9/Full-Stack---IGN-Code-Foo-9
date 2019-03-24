@@ -6,18 +6,22 @@ module.exports = {
     genchatModel
       .create({
         message: req.body.message,
+        userId: req.body.userId,
         name: req.body.name,
         date: req.body.date,
       })
-      .then(user => res.json(user))
+      .then(data => res.json(data))
       .catch(err => res.status(422).json(err));
   },
   getComments: function(req, res, next) {
     genchatModel
-      .find({})
+      .find()
       .sort({ _id: -1 })
       .limit(50)
-      .then(genchatHistory => res.json(genchatHistory))
+      .then(dbModel => {
+        console.log(dbModel);
+        res.json(dbModel);
+      })
       .catch(err => res.status(422).json(err));
   },
 };

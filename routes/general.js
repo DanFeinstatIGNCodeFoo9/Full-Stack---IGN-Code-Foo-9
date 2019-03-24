@@ -1,6 +1,6 @@
 const express = require(`express`);
 const router = express.Router();
-const chatController = require(`../api/controller/general`);
+const genchatController = require(`../api/controller/general`);
 // const app = express();
 const jwt = require(`jsonwebtoken`);
 
@@ -20,7 +20,7 @@ function validateUser(req, res, next) {
   );
 }
 
-router.get(`/`, validateUser, chatController.getComments);
-router.post(`/`, validateUser, chatController.addComment);
+router.get(`/`, validateUser, genchatController.getComments);
+router.post(`/`, validateUser, genchatController.addComment);
 
 module.exports = router;

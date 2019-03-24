@@ -5,7 +5,9 @@ export default {
       headers: { "x-access-token": authToken },
     });
   },
-  getComments: () => {
-    return axios.get("/api/ffa/");
+  getComments: authToken => {
+    return axios.get("/api/ffa/", {
+      headers: { "x-access-token": authToken },
+    });
   },
 };

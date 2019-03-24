@@ -46,7 +46,7 @@ class App extends Component {
   }
 
   getGenchatComments = () => {
-    genchatAPI.getComments().then(response => {
+    genchatAPI.getComments(localStorage.ignChatDemoJwt).then(response => {
       const messages = response.data.reverse();
 
       this.setState({

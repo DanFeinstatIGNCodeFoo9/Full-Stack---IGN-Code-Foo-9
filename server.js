@@ -11,10 +11,7 @@ const PORT = process.env.PORT || 3002;
 
 app.use((req, res, next) => {
   res.setHeader(`Access-Control-Allow-Origin`, `*`);
-  res.setHeader(
-    `Access-Control-Allow-Headers`,
-    `Content-type,application/json`
-  );
+  // res.setHeader(`Access-Control-Allow-Headers`);
   next();
 });
 
@@ -62,6 +59,12 @@ io.on(`connection`, function(socket) {
     socket.broadcast.emit("userConnected", {
       connectionId: data.socketId,
       userId: data.userId,
+    });
+  });
+  socket.on("sendingGenMessage", data => {
+    console.log(data);
+    socket.emit("newGenMessage", {
+      data,
     });
   });
   socket.on("disconnect", () => console.log(`${socket.id} has disconnected`));
