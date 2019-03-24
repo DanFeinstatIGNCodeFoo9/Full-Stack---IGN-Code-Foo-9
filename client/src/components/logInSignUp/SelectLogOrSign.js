@@ -1,11 +1,15 @@
 import React from "react";
-import styles from "./Login.module.css";
+import styles from "./Select.module.css";
 
 const SelectLogOrSign = props => {
   return (
     <div className={styles.container}>
-      <button>Sign Up</button>
-      <button>Log In</button>
+      <div ClassName={styles.btnContainer}>
+        <button className={styles.btn}>Sign Up</button>
+      </div>
+      <div ClassName={styles.btnContainer}>
+        <button className={styles.btn}>Log In</button>
+      </div>
     </div>
   );
 };

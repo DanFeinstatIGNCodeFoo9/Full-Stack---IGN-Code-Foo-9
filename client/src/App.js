@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import LogIn from "./components/logInSignUp/LogIn";
+import SelectLogOrSign from "./components/logInSignUp/SelectLogOrSign";
 import styles from "./App.module.css";
 import userAPI from "./utils/userAPI";
 import chatAPI from "./utils/chatAPI";
@@ -18,6 +19,7 @@ class App extends Component {
     userId: "",
     socket: "",
     loggedIn: false,
+    toDisplay: 1,
   };
 
   componentDidMount() {}
@@ -131,13 +133,29 @@ class App extends Component {
     });
   };
 
+  toSignUp = e => {
+    e.preventDefault();
+    this.setState({
+      toDisplay: 2,
+    });
+  };
+  toLogIn = e => {
+    e.preventDefault();
+    this.setState({
+      toDisplay: 3,
+    });
+  };
+
   render() {
     return (
       <div className={styles.App}>
-        <LogIn
-          handleInputChange={this.handleInputChange}
-          handleLogInSubmit={this.handleLogInSubmit}
-        />
+        {this.state.toDisplay === 1 && <SelectLogOrSign />}
+        {this.state.toDisplay === 3 && (
+          <LogIn
+            handleInputChange={this.handleInputChange}
+            handleLogInSubmit={this.handleLogInSubmit}
+          />
+        )}
       </div>
     );
   }

@@ -2,7 +2,7 @@ const express = require(`express`);
 const router = express.Router();
 const chatController = require(`../api/controller/chats`);
 // const app = express();
-// const jwt = require(`jsonwebtoken`);
+const jwt = require(`jsonwebtoken`);
 
 function validateUser(req, res, next) {
   jwt.verify(

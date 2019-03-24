@@ -2,17 +2,17 @@ import axios from "axios";
 export default {
   create: (authToken, userData) => {
     axios.post("/api/chat/", userData, {
-      headers: { Authorization: `Bearer${authToken}` },
+      headers: { Authorization: authToken },
     });
   },
   findChatInstance: authToken => {
     axios.get("/api/chat/", {
-      headers: { Authorization: `Bearer${authToken}` },
+      headers: { Authorization: authToken },
     });
   },
   addComment: (authToken, userData) => {
     axios.put("/api/chat/comment", userData, {
-      headers: { Authorization: `Bearer${authToken}` },
+      headers: { Authorization: authToken },
     });
   },
 };

@@ -4,25 +4,15 @@ const jwt = require(`jsonwebtoken`);
 
 module.exports = {
   create: function(req, res, next) {
-    userModel.create(
-      {
+    userModel
+      .create({
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
         socketId: "",
-      },
-      function(err, result) {
-        if (err) {
-          next(err);
-        } else {
-          res.json({
-            status: `success`,
-            message: `User added successfully`,
-            data: null,
-          });
-        }
-      }
-    );
+      })
+      .then(user => res.json(user))
+      .catch(err => res.status(422).json(err));
   },
 
   authenticate: function(req, res, next) {
@@ -52,26 +42,17 @@ module.exports = {
   },
 
   updateSocketId: function(req, res, next) {
-    userModel.findOneAndUpdate(
-      {
-        email: req.body.email,
-      },
-      {
-        $set: { socketId: req.body.socketId },
-      },
-      function(err, socketInfo) {
-        if (err) {
-          next(err);
-        } else {
-          console.log(`success!`);
-          res.json({
-            status: `success`,
-            message: `socketId updated`,
-            data: { data: socketInfo },
-          });
+    userModel
+      .findOneAndUpdate(
+        {
+          email: req.body.email,
+        },
+        {
+          $set: { socketId: req.body.socketId },
         }
-      }
-    );
+      )
+      .then(socketInfo => res.json(socketInfo))
+      .catch(err => res.status(422).json(err));
   },
 
   findAll: function(req, res, next) {

@@ -21,6 +21,6 @@ function validateUser(req, res, next) {
 }
 
 router.get(`/`, validateUser, chatController.getComments);
-router.put(`/`, validateUser, chatController.addComment);
+router.post(`/`, validateUser, chatController.addComment);
 
 module.exports = router;
