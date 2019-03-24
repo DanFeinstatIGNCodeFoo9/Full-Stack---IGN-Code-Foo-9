@@ -43,7 +43,12 @@ class LogIn extends PureComponent {
           autoComplete="current-password"
         /> */}
         <div className={styles.btnContainer}>
-          <button className={`${styles.btn} ${styles.back}`}>Back</button>
+          <button
+            className={`${styles.btn} ${styles.back}`}
+            onClick={this.props.back}
+          >
+            Back
+          </button>
           <button
             className={`${styles.btn} ${styles.submit}`}
             onClick={this.props.handleLogInSubmit}

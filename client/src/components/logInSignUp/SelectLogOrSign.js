@@ -4,12 +4,13 @@ import styles from "./Select.module.css";
 const SelectLogOrSign = props => {
   return (
     <div className={styles.container}>
-      <div ClassName={styles.btnContainer}>
-        <button className={styles.btn}>Sign Up</button>
-      </div>
-      <div ClassName={styles.btnContainer}>
-        <button className={styles.btn}>Log In</button>
-      </div>
+      <button className={styles.btn} onClick={props.toSignUp}>
+        Sign Up
+      </button>
+
+      <button className={styles.btn} onClick={props.toLogIn}>
+        Log In
+      </button>
     </div>
   );
 };

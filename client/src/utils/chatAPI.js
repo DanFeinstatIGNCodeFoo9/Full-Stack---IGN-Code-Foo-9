@@ -1,28 +1,18 @@
 import axios from "axios";
 export default {
   create: (authToken, userData) => {
-    axios.post("/api/chat/", userData, {
-      headers: { Authorization: authToken },
+    return axios.post("/api/chat/", userData, {
+      headers: { "x-access-token": authToken },
     });
   },
   findChatInstance: authToken => {
-    axios.get("/api/chat/", {
-      headers: { Authorization: authToken },
+    return axios.get("/api/chat/", {
+      headers: { "x-access-token": authToken },
     });
   },
   addComment: (authToken, userData) => {
-    axios.put("/api/chat/comment", userData, {
-      headers: { Authorization: authToken },
+    return axios.put("/api/chat/comment", userData, {
+      headers: { "x-access-token": authToken },
     });
   },
 };
-
-// signUp: userData => {
-//     return axios.post(`/api/user/register`, userData);
-//   },
-
-// var headers = {
-//     'Content-Type': 'application/json',
-//     'Authorization': 'JWT fefege...'
-// }
-// axios.post(Helper.getUserAPI(), data, {headers: headers})

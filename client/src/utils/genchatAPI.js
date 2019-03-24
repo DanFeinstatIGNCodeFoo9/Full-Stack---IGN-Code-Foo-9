@@ -1,13 +1,11 @@
 import axios from "axios";
 export default {
   addComment: (authToken, userData) => {
-    axios.post("/api/ffa/", userData, {
-      headers: { Authorization: authToken },
+    return axios.post("/api/ffa/", userData, {
+      headers: { "x-access-token": authToken },
     });
   },
-  getComments: authToken => {
-    axios.get("/api/ffa/", {
-      headers: { Authorization: authToken },
-    });
+  getComments: () => {
+    return axios.get("/api/ffa/");
   },
 };
