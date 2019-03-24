@@ -58,8 +58,9 @@ mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/chatIGN`, {
 io.on(`connection`, function(socket) {
   console.log(`a new user is connected: ${socket.id}`);
   socket.on("userLoggedIn", data => {
+    console.log(data);
     socket.broadcast.emit("userConnected", {
-      connectionId: socket.id,
+      connectionId: data.socketId,
       userId: data.userId,
     });
   });

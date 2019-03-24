@@ -9,6 +9,7 @@ module.exports = {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
+        socketId: "",
       },
       function(err, result) {
         if (err) {
