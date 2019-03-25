@@ -14,6 +14,7 @@ class SignUp extends PureComponent {
             id="name"
             placeholder=" enter a username"
             onChange={this.props.handleInputChange}
+            onKeyPress={this.props.submitOnEnter}
           />
         </div>
         <div className={styles.inputContainer}>
@@ -26,6 +27,7 @@ class SignUp extends PureComponent {
             placeholder=" yourEmail@whatever.com"
             autoComplete="email"
             onChange={this.props.handleInputChange}
+            onKeyPress={this.props.submitOnEnter}
           />
         </div>
         <div className={styles.inputContainer}>
@@ -38,6 +40,7 @@ class SignUp extends PureComponent {
             placeholder=" ex: mypassword, 12345, admin"
             autoComplete="current-password"
             onChange={this.props.handleInputChange}
+            onKeyPress={this.props.submitOnEnter}
           />
         </div>
         <div className={styles.inputContainer}>
@@ -50,6 +53,7 @@ class SignUp extends PureComponent {
             placeholder=" enter password again"
             autoComplete="current-password"
             onChange={this.props.handleInputChange}
+            onKeyPress={this.props.submitOnEnter}
           />
         </div>
         <div className={styles.btnContainer}>

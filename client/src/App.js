@@ -100,13 +100,29 @@ class App extends Component {
   handleInputChange = e => {
     const name = e.target.name;
     const value = e.target.value;
-    if (value.length > 30) {
+    let limit =
+      e.target.name === `name` ? 16 : e.target.name === `email` ? 30 : 12;
+    if (value.length > limit) {
       e.target.value = this.state[name];
       alert("Maximum character length reached");
     } else {
       this.setState({
         [name]: value,
       });
+    }
+  };
+
+  letEnterSubmitLogIn = e => {
+    let code = e.keyCode || e.which;
+    if (code === 13) {
+      this.handleLogInSubmit(e);
+    }
+  };
+
+  letEnterSubmitSignUp = e => {
+    let code = e.keyCode || e.which;
+    if (code === 13) {
+      this.handleSignUpSubmit(e);
     }
   };
 
@@ -166,12 +182,15 @@ class App extends Component {
       email: this.state.email,
       password: this.state.password,
     };
-
+    const failstate = setTimeout(() => {
+      alert(`Invalid email or password`);
+    }, 3000);
     userAPI.logIn(userData).then(response => {
-      console.log(response);
+      // console.log(response);
       if (response.data.status === "error") {
         alert(response.data.message);
       } else {
+        clearTimeout(failstate);
         localStorage.setItem("ignChatDemoJwt", response.data.data.token);
         this.loggedIn(response.data.data.user._id);
         const socketInfo = {
@@ -195,8 +214,8 @@ class App extends Component {
     socket.emit("userLoggedIn", {
       data: { userId: name, socketId: socket.id },
     });
-    console.log(`name: ${name}`);
-    console.log(`socketid: ${socket.id}`);
+    // console.log(`name: ${name}`);
+    // console.log(`socketid: ${socket.id}`);
   };
 
   logOut = () => {
@@ -259,6 +278,7 @@ class App extends Component {
         )}
         {this.state.toDisplay === 2 && (
           <SignUp
+            submitOnEnter={this.letEnterSubmitSignUp}
             back={this.toLanding}
             handleInputChange={this.handleInputChange}
             handleSignUpSubmit={this.handleSignUpSubmit}
@@ -266,6 +286,7 @@ class App extends Component {
         )}
         {this.state.toDisplay === 3 && (
           <LogIn
+            submitOnEnter={this.letEnterSubmitLogIn}
             back={this.toLanding}
             handleInputChange={this.handleInputChange}
             handleLogInSubmit={this.handleLogInSubmit}
@@ -283,6 +304,7 @@ class App extends Component {
                 <Message
                   key={index}
                   name={value.name}
+                  currentName={this.state.name}
                   message={value.message}
                   color={"blue"}
                 />

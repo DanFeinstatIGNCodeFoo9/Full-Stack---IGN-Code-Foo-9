@@ -15,30 +15,36 @@ class Chat extends Component {
     return (
       <div className={styles.container}>
         <div className={styles.commentContainer}>{this.props.children}</div>
-        <div className={styles.formContainer}>
-          <form>
-            <input
-              className={styles.input}
-              name="comment"
-              value={this.props.comment}
-              placeholder="enter message here"
-              onChange={this.props.handleInputChange}
-            />
-            <button
-              className={styles.btn}
-              onClick={this.props.handleGenchatComment}
-            >
-              Submit
-            </button>
-            <button
-              className={styles.btn}
-              onClick={this.props.getGenchatComments}
-            >
-              Get It
-            </button>
-          </form>
-        </div>
+        {/* <div className={styles.formContainer}> */}
+        <form className={styles.formContainer}>
+          <input
+            className={styles.input}
+            name="comment"
+            value={this.props.comment}
+            placeholder="enter message here"
+            onChange={this.props.handleInputChange}
+          />
+          <button
+            className={styles.btn}
+            //   onClick={this.props.getGenchatComments}
+          >
+            Hey!
+          </button>
+          <button
+            className={styles.btn}
+            //   onClick={this.props.getGenchatComments}
+          >
+            Well Met!
+          </button>
+          <button
+            className={styles.btn}
+            onClick={this.props.handleGenchatComment}
+          >
+            Submit
+          </button>
+        </form>
       </div>
+      //   </div>
     );
   }
 }

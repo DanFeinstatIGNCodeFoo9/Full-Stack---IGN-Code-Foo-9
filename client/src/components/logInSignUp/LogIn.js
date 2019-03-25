@@ -18,6 +18,7 @@ class LogIn extends PureComponent {
             placeholder=" enter your email"
             autoComplete="email"
             onChange={this.props.handleInputChange}
+            onKeyPress={this.props.submitOnEnter}
           />
         </div>
         <div className={styles.inputContainer}>
@@ -32,6 +33,7 @@ class LogIn extends PureComponent {
             placeholder=" enter your password"
             autoComplete="current-password"
             onChange={this.props.handleInputChange}
+            onKeyPress={this.props.submitOnEnter}
           />
         </div>
         {/* <input

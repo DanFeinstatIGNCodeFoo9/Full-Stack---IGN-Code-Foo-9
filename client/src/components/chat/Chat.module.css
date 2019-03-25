@@ -3,13 +3,18 @@
   grid-row-start: 2;
   min-height: 80vh;
   padding: 8%;
-  background-color: green;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 4px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.19), 0 8px 17px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
+  color: white;
+  background-image: url(../../images/ignLogo.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: black;
+  background-position: center;
 }
 
 /* .title {
@@ -26,11 +31,13 @@
   min-height: 400px;
   width: 90%;
   min-width: 100px;
-  background-color: grey;
+  background-color: #faecc9;
   border-radius: 4px;
   box-sizing: border-box;
   overflow-y: auto;
-  overflow-x: none;
+  overflow-x: none !important;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-height: 500px) {
@@ -52,6 +59,7 @@
 .formContainer {
   height: 30%;
   width: 80%;
+  padding: 4px;
   box-sizing: border-box;
 }
 
@@ -70,22 +78,25 @@
   box-sizing: border-box;
 }
 
-.btnContainer {
+/* .btnContainer {
   margin-top: 10%;
   width: 60%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-}
+} */
 
 .btn {
   width: 64px;
-  height: 24px;
+  height: 32px;
+  margin-left: 4px;
+  margin-right: 4px;
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   border: none;
   cursor: pointer;
+  /* font-weight: 600; */
 }
 
 .btn:hover {

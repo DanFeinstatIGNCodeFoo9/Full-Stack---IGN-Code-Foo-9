@@ -1,8 +1,31 @@
 .container {
-  border: 1px solid lightgrey;
+  width: 70%;
+  margin: 6px;
+  color: black;
+  background-color: #8cb6e1;
   box-sizing: border-box;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+.container:hover {
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+    0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  transform: scale(1.08);
+}
+
+.right {
+  margin-left: auto;
+  background-color: #e5abab;
+  /* background-color: ; */
+}
+
+@media (max-width: 500px) {
+  .container {
+    width: 90%;
+  }
+  .right {
+    margin: 6px;
+  }
 }
 
 /* .text {
