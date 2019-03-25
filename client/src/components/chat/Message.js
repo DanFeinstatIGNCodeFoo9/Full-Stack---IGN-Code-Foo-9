@@ -12,10 +12,7 @@ const Message = props => {
     >
       {/* <div className={styles.contentContainer}> */}
       <p className={styles.text}>
-        <span className={`${styles.name} ${styles[props.color]}`}>
-          {props.name}
-        </span>
-        : {props.message}
+        <span className={styles.name}>{props.name}</span>: {props.message}
       </p>
       {/* </div> */}
     </div>
