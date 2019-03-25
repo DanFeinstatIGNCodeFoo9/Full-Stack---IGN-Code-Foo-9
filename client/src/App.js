@@ -84,6 +84,50 @@ class App extends Component {
     }
   };
 
+  handleWellMet = e => {
+    e.preventDefault();
+    const message = "Well Met!";
+    const commentData = {
+      message: message,
+      name: this.state.name,
+      id: this.state.userId,
+      date: new Date(),
+    };
+
+    const socketCommentData = {
+      message: message,
+      name: this.state.name,
+      id: this.state.userId,
+      date: new Date(),
+      audio: true,
+    };
+
+    socket.emit("sendingGenMessage", { data: socketCommentData });
+    genchatAPI.addComment(localStorage.ignChatDemoJwt, commentData);
+  };
+
+  handleHeyListen = e => {
+    e.preventDefault();
+    const message = "Hey, listen!";
+    const commentData = {
+      message: message,
+      name: this.state.name,
+      id: this.state.userId,
+      date: new Date(),
+    };
+
+    const socketCommentData = {
+      message: message,
+      name: this.state.name,
+      id: this.state.userId,
+      date: new Date(),
+      audio: true,
+    };
+
+    socket.emit("sendingGenMessage", { data: socketCommentData });
+    genchatAPI.addComment(localStorage.ignChatDemoJwt, commentData);
+  };
+
   handleInputChangeForChat = e => {
     const name = e.target.name;
     const value = e.target.value;
@@ -123,6 +167,13 @@ class App extends Component {
     let code = e.keyCode || e.which;
     if (code === 13) {
       this.handleSignUpSubmit(e);
+    }
+  };
+
+  letEnterSubmitChat = e => {
+    let code = e.keyCode || e.which;
+    if (code === 13) {
+      this.handleGenchatComment(e);
     }
   };
 
@@ -294,8 +345,11 @@ class App extends Component {
         )}
         {this.state.toDisplay === 4 && (
           <Chat
+            submitOnEnter={this.letEnterSubmitChat}
             comment={this.state.comment}
             getGenchatComments={this.getGenchatComments}
+            heyListen={this.handleHeyListen}
+            wellMet={this.handleWellMet}
             handleInputChange={this.handleInputChangeForChat}
             handleGenchatComment={this.handleGenchatComment}
           >
@@ -306,7 +360,7 @@ class App extends Component {
                   name={value.name}
                   currentName={this.state.name}
                   message={value.message}
-                  color={"blue"}
+                  audio={value.audio ? true : false}
                 />
               );
             })}

@@ -105,6 +105,13 @@
   transform: scale(1.08);
 }
 
+.navi {
+  background-image: url(../../images/navi.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
 @media (min-width: 500px) {
   .container {
     grid-column-start: 2;

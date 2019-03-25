@@ -23,18 +23,16 @@ class Chat extends Component {
             value={this.props.comment}
             placeholder="enter message here"
             onChange={this.props.handleInputChange}
+            onKeyPress={this.props.submitOnEnter}
           />
-          <button
-            className={styles.btn}
-            //   onClick={this.props.getGenchatComments}
-          >
-            Hey!
+          <button className={styles.btn} onClick={this.props.wellMet}>
+            Well Met!
           </button>
           <button
-            className={styles.btn}
-            //   onClick={this.props.getGenchatComments}
+            className={`${styles.btn} ${styles.navi}`}
+            onClick={this.props.heyListen}
           >
-            Well Met!
+            ____
           </button>
           <button
             className={styles.btn}
