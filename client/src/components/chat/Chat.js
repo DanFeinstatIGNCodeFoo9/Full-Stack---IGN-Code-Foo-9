@@ -31,7 +31,7 @@ class Chat extends Component {
           />
           <div className={styles.btnContainer}>
             <button className={styles.btn} onClick={this.props.wellMet}>
-              Well Met!
+              Greet
             </button>
             <button
               className={`${styles.btn} ${styles.navi}`}
