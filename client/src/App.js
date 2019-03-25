@@ -6,11 +6,8 @@ import SignUp from "./components/logInSignUp/SignUp";
 import SelectLogOrSign from "./components/logInSignUp/SelectLogOrSign";
 import styles from "./App.module.css";
 import userAPI from "./utils/userAPI";
-import chatAPI from "./utils/chatAPI";
 import genchatAPI from "./utils/genchatAPI";
 import io from "socket.io-client";
-// import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from "constants";
-// import { stat } from "fs";
 
 const socket = io.connect();
 
@@ -196,16 +193,13 @@ class App extends Component {
       email: this.state.email,
       password: this.state.password,
     };
-    // console.log(userData);
     userAPI.signUp(userData).then(response => {
-      console.log(response);
       const userInfo = {
         email: this.state.email,
         password: this.state.password,
       };
 
       userAPI.logIn(userInfo).then(response => {
-        console.log(response);
         if (response.data.status === "error") {
           alert(response.data.message);
         } else {
@@ -238,7 +232,6 @@ class App extends Component {
       alert(`Invalid email or password`);
     }, 3000);
     userAPI.logIn(userData).then(response => {
-      // console.log(response);
       if (response.data.status === "error") {
         alert(response.data.message);
       } else {
@@ -266,8 +259,6 @@ class App extends Component {
     socket.emit("userLoggedIn", {
       data: { userId: name, socketId: socket.id },
     });
-    // console.log(`name: ${name}`);
-    // console.log(`socketid: ${socket.id}`);
   };
 
   logOut = () => {

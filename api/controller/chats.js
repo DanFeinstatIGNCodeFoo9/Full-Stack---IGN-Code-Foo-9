@@ -1,5 +1,3 @@
-// const http = require(`http`).Server(app);
-// const io = require(`socket.io`)(http);
 const chatModel = require(`../model/chats`);
 const jwt = require(`jsonwebtoken`);
 
@@ -14,23 +12,10 @@ module.exports = {
       })
       .then(chatData => res.json(chatData))
       .catch(err => res.status(422).json(err));
-    //   function(err, success) {
-    //     if (err) {
-    //       next(err);
-    //     } else {
-    //       res.json({
-    //         status: `success`,
-    //         message: `new chat created`,
-    //         data: { data: success },
-    //       });
-    //     }
-    //   }
-    // );
   },
   findChatInstance: function(req, res, next) {
     jwt.verify(req.token, process.env.SECRET, (err, authorizedData) => {
       if (err) {
-        //If error send Forbidden (403)
         console.log("ERROR: Could not connect to the protected route");
         res.sendStatus(403);
       } else {

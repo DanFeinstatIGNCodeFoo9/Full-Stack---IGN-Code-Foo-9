@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styles from "./Chat.module.css";
-import genchatAPI from "../../utils/genchatAPI";
+
+//Need to add a throttling function to the buttons
+//Ran out of time, but will add later.
 
 class Chat extends Component {
   constructor(props) {
@@ -17,7 +19,7 @@ class Chat extends Component {
         <div className={styles.commentContainer} ref={this.props.chatRef}>
           {this.props.children}
         </div>
-        {/* <div className={styles.formContainer}> */}
+
         <form className={styles.formContainer}>
           <input
             className={styles.input}
@@ -46,12 +48,9 @@ class Chat extends Component {
           </div>
         </form>
       </div>
-      //   </div>
     );
   }
 }
-
-// export default Chat;
 
 export default React.forwardRef((props, ref) => (
   <Chat chatRef={ref} {...props} />

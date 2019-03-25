@@ -36,14 +36,6 @@ class LogIn extends PureComponent {
             onKeyPress={this.props.submitOnEnter}
           />
         </div>
-        {/* <input
-          className={styles.input}
-          name="passwordCheck"
-          type="password"
-          id="verify-password"
-          placeholder="enter password again"
-          autoComplete="current-password"
-        /> */}
         <div className={styles.btnContainer}>
           <button
             className={`${styles.btn} ${styles.back}`}

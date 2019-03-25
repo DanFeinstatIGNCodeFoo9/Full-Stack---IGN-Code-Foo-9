@@ -28,12 +28,10 @@ class Message extends PureComponent {
         {this.props.audio && this.props.message === "Hey, listen!" && (
           <audio src={heyListen} autoPlay type="audio/mpeg" />
         )}
-        {/* <div className={styles.contentContainer}> */}
         <p className={styles.text}>
           <span className={styles.name}>{this.props.name}</span>:{" "}
           {this.props.message}
         </p>
-        {/* </div> */}
       </div>
     );
   }

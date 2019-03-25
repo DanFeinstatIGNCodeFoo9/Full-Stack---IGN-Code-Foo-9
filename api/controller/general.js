@@ -1,7 +1,6 @@
 const genchatModel = require(`../model/general`);
 
 module.exports = {
-  // create: function()
   addComment: function(req, res, next) {
     genchatModel
       .create({
@@ -19,7 +18,6 @@ module.exports = {
       .sort({ _id: -1 })
       .limit(50)
       .then(dbModel => {
-        console.log(dbModel);
         res.json(dbModel);
       })
       .catch(err => res.status(422).json(err));

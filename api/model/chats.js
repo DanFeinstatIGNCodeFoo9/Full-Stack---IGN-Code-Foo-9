@@ -1,5 +1,8 @@
 const mongoose = require(`mongoose`);
 
+//This model is for the originally planned version of this app
+//This model is currently not in use.
+
 const Schema = mongoose.Schema;
 
 const ChatSchema = new Schema({

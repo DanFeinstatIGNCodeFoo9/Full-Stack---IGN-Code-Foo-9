@@ -33,21 +33,6 @@ app.use(bodyParser.json());
 
 app.use(routes);
 
-// app.use((req, res, next) => {
-//   let err = new Error(`Not Found`);
-//   err.status = 404;
-//   next(err);
-// });
-
-// app.use((err, req, res, next) => {
-//   console.log(err);
-//   if (err.status === 404) {
-//     res.status(404).json({ messsage: `Not found` });
-//   } else {
-//     res.status(500).json({ message: `Something looks wrong` });
-//   }
-// });
-
 if (process.env.NODE_ENV === `production`) {
   app.use(express.static(path.join(__dirname, `client/build`)));
   app.get(`*`, (req, res) => {
