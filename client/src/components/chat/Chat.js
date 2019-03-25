@@ -25,21 +25,23 @@ class Chat extends Component {
             onChange={this.props.handleInputChange}
             onKeyPress={this.props.submitOnEnter}
           />
-          <button className={styles.btn} onClick={this.props.wellMet}>
-            Well Met!
-          </button>
-          <button
-            className={`${styles.btn} ${styles.navi}`}
-            onClick={this.props.heyListen}
-          >
-            ____
-          </button>
-          <button
-            className={styles.btn}
-            onClick={this.props.handleGenchatComment}
-          >
-            Submit
-          </button>
+          <div className={styles.btnContainer}>
+            <button className={styles.btn} onClick={this.props.wellMet}>
+              Well Met!
+            </button>
+            <button
+              className={`${styles.btn} ${styles.navi}`}
+              onClick={this.props.heyListen}
+            >
+              ____
+            </button>
+            <button
+              className={styles.btn}
+              onClick={this.props.handleGenchatComment}
+            >
+              Submit
+            </button>
+          </div>
         </form>
       </div>
       //   </div>

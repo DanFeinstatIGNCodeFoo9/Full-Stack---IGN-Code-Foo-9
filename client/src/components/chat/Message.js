@@ -13,10 +13,10 @@ const Message = props => {
       }
     >
       {props.audio && props.message === "Well Met!" && (
-        <audio src={wellMet} autoPlay />
+        <audio src={wellMet} autoPlay type="audio/mpeg" />
       )}
       {props.audio && props.message === "Hey, listen!" && (
-        <audio src={heyListen} autoPlay />
+        <audio src={heyListen} autoPlay type="audio/mpeg" />
       )}
       {/* <div className={styles.contentContainer}> */}
       <p className={styles.text}>
