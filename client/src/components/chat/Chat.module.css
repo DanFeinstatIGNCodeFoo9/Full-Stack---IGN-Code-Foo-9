@@ -55,6 +55,10 @@
     width: 100vw;
     height: 100vh;
   }
+  .commentContainer {
+    min-height: 500px;
+    min-width: 300px;
+  }
 }
 
 .formContainer {
