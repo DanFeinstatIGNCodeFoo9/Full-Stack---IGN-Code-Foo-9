@@ -31,6 +31,7 @@ class App extends Component {
     target: "",
   };
 
+  chatRef = React.createRef();
   componentDidMount() {
     socket.on("newGenMessage", message => {
       let genchat = [...this.state.messages];
@@ -288,6 +289,10 @@ class App extends Component {
     });
   };
 
+  scrollToBottom = () => {
+    this.chatRef.current.scrollTop = this.chatRef.current.scrollHeight;
+  };
+
   //quick and dirty conditional rendering as 'page changing'.
   //A much better way to do this for more complex layouts
   // would be something like react router.
@@ -345,6 +350,7 @@ class App extends Component {
         )}
         {this.state.toDisplay === 4 && (
           <Chat
+            ref={this.chatRef}
             submitOnEnter={this.letEnterSubmitChat}
             comment={this.state.comment}
             getGenchatComments={this.getGenchatComments}
@@ -356,6 +362,7 @@ class App extends Component {
             {this.state.messages.map((value, index) => {
               return (
                 <Message
+                  scrolltToBottom={this.scrollToBottom}
                   key={index}
                   name={value.name}
                   currentName={this.state.name}

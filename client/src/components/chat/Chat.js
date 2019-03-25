@@ -14,7 +14,9 @@ class Chat extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <div className={styles.commentContainer}>{this.props.children}</div>
+        <div className={styles.commentContainer} ref={this.props.chatRef}>
+          {this.props.children}
+        </div>
         {/* <div className={styles.formContainer}> */}
         <form className={styles.formContainer}>
           <input
@@ -49,4 +51,8 @@ class Chat extends Component {
   }
 }
 
-export default Chat;
+// export default Chat;
+
+export default React.forwardRef((props, ref) => (
+  <Chat chatRef={ref} {...props} />
+));
