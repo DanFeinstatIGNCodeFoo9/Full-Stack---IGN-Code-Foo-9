@@ -6,6 +6,8 @@ Note: The audio from a minor novelty feature does not currently function in mobi
 
 Note2: I've purposefully left the .env file off the .gitignore for ease of use, which I would typically never do. In that vein, I also left source maps intact on deployment.
 
+Note3: Alerts are tacky and terrible, but hot damn are they fast to write. I'd ideally like to replace the alerts with modals and popovers, but I didn't want to use prestyled components for this and ran out of time.
+
 ## Getting Started
 
 Clone the repo.
