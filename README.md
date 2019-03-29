@@ -14,7 +14,7 @@ Clone the repo.
 
 Npm install the dependencies for the package.json inside and outside the client folder.
 
-For local host deployment get your server running with "node server.js" in the root directory, and run "yarn start" in the client.
+For local host deployment, make sure the local mongodb client of your choice (I prefer  Robo 3T) is running, then get your server running with "node server.js" in the root directory, and run "yarn start" in the client.
 
 For heroku deployment, run "heroku create" in the root directory.
 
